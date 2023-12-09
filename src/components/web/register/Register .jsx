@@ -5,7 +5,7 @@ import {registerSchema} from '../validation/Validation.js'
 import axios from 'axios';
 import {toast } from 'react-toastify';
 export default function Register () {
-   
+
        const initialValues={
             userName:'',
             email:'',
@@ -37,9 +37,7 @@ export default function Register () {
               theme: "dark",
               });
           }
-       
-
-          console.log(data);
+      
           }
           /*validate:values=>{
             let errors ={};
@@ -59,9 +57,7 @@ export default function Register () {
             onSubmit,
             validationSchema:registerSchema
           });
-       
- 
-    const inputs =[
+        const inputs =[
         {
             id:'username',
             type:'text',
@@ -106,6 +102,7 @@ export default function Register () {
         touched={formik.touched}
         />
     )
+
   return (
     <>
     <div className='container bg-info mt-5  '> 
@@ -115,8 +112,6 @@ export default function Register () {
   <div className='mt-5 text-center '> 
   <button  type="submit"  disabled={!formik.isValid}>Register</button>
   </div>
-       
-
     </form>
     </div>
     </>
