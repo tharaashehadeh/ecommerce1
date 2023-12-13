@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 export default function GetOrder() {
     const order = async () => {
         try {
-          const token = localStorage.getItem("userToken");
+          let token = localStorage.getItem("userToken");
             const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/order`,
             { headers: { Authorization: `Tariq__${token}` } }
             )
