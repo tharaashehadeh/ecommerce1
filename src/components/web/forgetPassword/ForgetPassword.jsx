@@ -31,7 +31,7 @@ export default function ForgetPassword() {
          progress: undefined,
          theme: "dark",
          });
-         navigate('/');
+         navigate('/login');
         }
         console.log(data);
         }

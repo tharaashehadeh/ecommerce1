@@ -1,0 +1,32 @@
+.profile{
+    background-color: rgb(221, 250, 255);
+    font-size: 25px;
+    color: rgb(12, 145, 123);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    gap:30px;
+    height: 100;
+}
+.userData{
+    width: 30%;
+    height:30%;
+}
+.profileLinks nav{
+    background-color: rgb(152, 240, 255);
+    height:calc( 100dvh - 80px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 250px;
+    align-items: center;
+}
+.profileLinks{
+    width: 300px;
+}
+.userData{
+    flex-grow: 1;
+}
+nav a{
+    color:rgb(12, 145, 123);
+    text-decoration: none;
+}

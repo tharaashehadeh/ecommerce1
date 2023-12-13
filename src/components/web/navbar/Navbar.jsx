@@ -6,15 +6,12 @@ import { useQuery } from 'react-query';
 export default function Navbar() {
 
   let { userToken,setUserToken,userData,setUserData } = useContext(UserContext);
+  const {count}=useContext(CartContext);
+  console.log(count);
 
   let navigate =useNavigate();
   
-  const {getCartContext} = useContext(CartContext);
-  const getCart = async ()=>{
-        const result = await getCartContext();
-        return  result;
-  }
-  const {data}=useQuery("cart",getCart);
+
  
   const logout=()=>{
     console.log("test");
@@ -48,7 +45,7 @@ export default function Navbar() {
               </li>
               {userToken ? (
               <li className="nav-item">
-                <Link className="nav-link" to="/cart">Cart<span className='mx-2 bg-danger text-black width:50%'>{data?.count?data.count:<h2></h2>}</span></Link>
+                <Link className="nav-link" to="/cart">Cart<span className='badge bg-danger mx-2'>{count}</span></Link>
               </li>) : null}
 
 

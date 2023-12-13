@@ -6,12 +6,12 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/User.jsx";
+import { SendCodenSchema } from "../validation/Validation.js";
 export default function sendCode() {
     const navigate = useNavigate();
     let{userToken,setUserToken}= useContext(UserContext);
     const initialValues={
         email:'',
-     
     };
     const onSubmit=async (email)=>{
         const {data} =await axios.patch(`https://ecommerce-node4.vercel.app/auth/sendcode`,email);
@@ -36,7 +36,18 @@ export default function sendCode() {
         const formik = useFormik({
             initialValues,
             onSubmit,
+            validationSchema:SendCodenSchema
           });
+          const inputs =[
+            {
+                id:'email',
+                type:'email',
+                name:'email',
+                title:'UserEmail',
+                value:formik.values.email,
+            },
+           
+        ];
 
   return (
    <>

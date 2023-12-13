@@ -25,6 +25,11 @@ export default function Product() {
     <div className='container'>
         <div className='row'>
             <div className='col-lg-4 mt-3'>
+            {data.subImages.map((image, index) => (
+                <React.Fragment key={index}>
+                  <img className='mt-5 width:50% height:50%' src={image.secure_url} />
+                </React.Fragment>
+          ))}
                 </div>
             
            

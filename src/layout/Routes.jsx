@@ -12,6 +12,10 @@ import ProtectedRoute from "../components/web/protectedRoute/ProtectedRoute.jsx"
 import Profile from "../components/web/profile/Profile.jsx";
 import SendCode from "../components/web/sendCode/sendCode.jsx";
 import ForgetPassword from "../components/web/forgetPassword/ForgetPassword.jsx";
+import UserInfo from "../components/web/profile/UserInfo.jsx";
+import UserContact from "../components/web/profile/UserContact.jsx";
+import CreateOrder from "../components/web/createOrder/CreateOrder.jsx";
+import GetOrder from "../components/web/createOrder/GetOrder.jsx";
 export  const router = createBrowserRouter([
     {
       path: "/",
@@ -27,6 +31,7 @@ export  const router = createBrowserRouter([
             element:<Login />,
            
           },
+        
         {
          // path: "/",
          index:true,
@@ -41,8 +46,41 @@ export  const router = createBrowserRouter([
           </ProtectedRoute>
         },
         {
+          path: "createOrder",
+          element:<CreateOrder />,
+        },
+        {
             path:"profile",
-            element:<Profile/>
+
+            element:  
+            < ProtectedRoute >
+             <Profile/>
+            </ProtectedRoute>,
+            children:[
+              {
+                index:true,
+           
+                element:<UserInfo>
+
+                </UserInfo>
+              },
+              {
+               path:'contact',
+               element:<UserContact>
+
+               </UserContact>
+
+              },
+              {
+                path:'getorder',
+                element:<GetOrder>
+ 
+                </GetOrder>
+ 
+               }
+            ]
+           
+            
           },
           {
             path:"sendCode",

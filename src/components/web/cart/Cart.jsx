@@ -3,10 +3,13 @@ import'./Cart.css'
 import { CartContext } from '../context/Cart.jsx'
 import { useQuery } from 'react-query'
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+
+
 
 export default function Cart() {
 
-  const{getCartContext,removeItemContext} = useContext(CartContext);
+  const{getCartContext,removeItemContext,clearCartContext,incraseQuantity,decraseQuantity} = useContext(CartContext);
    const getCart=async()=>{
    const result= await getCartContext();
     return result;
@@ -16,7 +19,19 @@ export default function Cart() {
     const result = await removeItemContext(productId);
     return result;
    }
-    const {data,isLoading} =useQuery("cart",getCart);
+   const incrase=async(productId)=>{
+    const result = await incraseQuantity(productId);
+    return result;
+   }
+   const decrase=async(productId)=>{
+    const result = await decraseQuantity(productId);
+    return result;
+   }
+   const clearCart=async()=>{
+    const result = await clearCartContext();
+    return result;
+   }
+    const {data,isLoading} =useQuery("cart",getCart,incrase,decrase,clearCart);
     console.log(data);
     if(isLoading){
         return<p>Loading...</p>
@@ -70,7 +85,7 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="quantity">
-                  <button>
+                  <button onClick={()=>decrase(product.details._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width={16}
@@ -88,7 +103,7 @@ export default function Cart() {
                     </svg>
                   </button>
                   <span>{product.quantity}</span>
-                  <button>
+                  <button onClick={()=>incrase(product.details._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width={16}
@@ -115,7 +130,11 @@ export default function Cart() {
 
             
           </div>
-          <div className="cart-summary">
+          <div>
+          <button className=" bg-info   text-black"  type="submit" onClick={()=>clearCart()}>Clear Cart</button>
+              
+               </div>
+          <div className="cart-summary mx-3 mt-5">
             <h2>Cart summary</h2>
             <div className="summery-items">
               <div className="summary-item">
@@ -145,11 +164,13 @@ export default function Cart() {
                 <span>$1345.00</span>
               </div>
               <div className="checkout">
-                <a href="#">Chekout</a>
+                <Link to='/createOrder'>Chekout</Link>
               </div>
             </div>
           </div>
+          
         </div>
+        
         <div className="row">
           <h2>Have a coupon ?</h2>
           <p>Add your code for an instant cart discount</p>
@@ -170,6 +191,7 @@ export default function Cart() {
             <button>Apply</button>
           </div>
         </div>
+        
       </div>
     </div>
   </div>
