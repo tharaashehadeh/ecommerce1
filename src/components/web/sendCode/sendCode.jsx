@@ -7,6 +7,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/User.jsx";
 import { SendCodenSchema } from "../validation/Validation.js";
+import './sendCode.css'
 export default function sendCode() {
     const navigate = useNavigate();
     let{userToken,setUserToken}= useContext(UserContext);
@@ -51,8 +52,9 @@ export default function sendCode() {
 
   return (
    <>
+   <div className="bodyy">
      <div className="container">
-        <h1 className=" mt-5 text-center">Send Code</h1>
+        <h1 className="  text-center">Send Code</h1>
         <form className="mt-5" onSubmit={formik.handleSubmit} encType="multipart/form-data" >
           <Input className="mt-5"
             type={"email"}
@@ -66,9 +68,10 @@ export default function sendCode() {
             touched={formik.touched}
           />
           <div className=" mt-5 text-center  ">
-            <input type="submit" className="  bg-info  text-black"  value="Send Code" />
+            <input type="submit" className="t    "  value="Send Code" />
           </div>
         </form>
+      </div>
       </div>
    </>
   )

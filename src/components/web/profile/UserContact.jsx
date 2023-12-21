@@ -9,11 +9,11 @@ export default function UserContact() {
         return <p>...Loading</p>
       }
   return (
-    <>
+    <div className={`${style.profile}`}>
     <div className={`${style.userData}`}>
-    <p className='t'>{userData.email}</p>
+    <p className=''>{userData.email}</p>
     </div>
-
-    </>
+</div>
+    
   )
 }

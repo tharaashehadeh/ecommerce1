@@ -11,9 +11,9 @@ export default function Profile() {
     console.log(userData)
   return (
     <>
-    <aside className={`${style.profile}`}>
+    <aside className={`${style.profile}` }>
       <div className={`${style.profileLinks}`}>
-        <nav>
+        <nav className='na'>
           <Link to=''>Info</Link>
           <Link to='contact'>Contact</Link>
           <Link to='getorder'>Order</Link>

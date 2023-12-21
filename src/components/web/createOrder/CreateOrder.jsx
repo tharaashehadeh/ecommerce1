@@ -1,37 +1,35 @@
-import React, { useContext } from 'react'
-import { CreateOrderSchema } from '../validation/Validation';
-import { useFormik } from 'formik';
-import Input from '../../pages/Input';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { CartContext } from '../context/Cart';
-import { useQuery } from 'react-query';
-
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { CartContext } from "../context/Cart";
+import { useQuery } from "react-query";
+import Input from "../../pages/Input";
+import { useFormik } from "formik";
+import { UserContext } from "../context/User.jsx";
+import { toast } from "react-toastify";
 export default function CreateOrder() {
-
     const { getCartContext } = useContext(CartContext);
     const getCart = async () => {
-        const result = await getCartContext();
-        return result;
+        const res = await getCartContext();
+        return res;
     };
-
+    let token = localStorage.getItem("userToken");
     const initialValues = {
-        couponName: '',
-        address: '',
-        phone: '',
+        address: "",
+        phone: "",
+        couponName: "",
     };
-
-    const onSubmit = async (users) => {
+    const onSubmit = async (info) => {
         try {
-            const token = localStorage.getItem("userToken");
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/order`, users,
-
+            const { data } = await axios.post(
+                "https://ecommerce-node4.vercel.app/order",
+                info,
                 { headers: { Authorization: `Tariq__${token}` } }
-            )
-            if (data.message == 'success') {
-                toast.success('CreateOrder succesfully', {
+            );
+            console.log(data);
+            if (data.message == "success") {
+                toast.success("Create Order successfully created!", {
                     position: "top-right",
-                    autoClose: false,
+                    autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
@@ -39,49 +37,47 @@ export default function CreateOrder() {
                     progress: undefined,
                     theme: "dark",
                 });
-                navigate('/createOrder');
             }
-            console.log(data);
-            return data;
+        } catch (err) {
+            console.log(err);
         }
-        catch (error) {
-            console.log(error)
-        }
-    }
+    };
     const formik = useFormik({
         initialValues,
         onSubmit,
-        validationSchema: CreateOrderSchema,
+
+        validateOnBlur: true,
+        validateOnChange: false,
     });
+
     const inputs = [
         {
-            id: 'couponName',
-            type: 'text',
-            name: 'couponName',
-            title: 'couponName',
-            value: formik.values.couponName,
-        },
-        {
-            id: 'address',
-            type: 'text',
-            name: 'address',
-            title: 'address',
+            id: "address",
+            type: "text",
+            name: "address",
+            title: "Address",
             value: formik.values.address,
         },
         {
-            id: 'phone',
-            type: 'text',
-            name: 'phone',
-            title: 'phone',
+            id: "phone",
+            type: "number",
+            name: "phone",
+            title: "Phone Number",
             value: formik.values.phone,
         },
+        {
+            id: "couponName",
+            type: "text",
+            name: "couponName",
+            title: "Coupon Name",
+            value: formik.values.couponName,
+        },
     ];
-    const renderInputs = inputs.map((input, index) =>
-
+    const renderInputs = inputs.map((input, index) => (
         <Input
             type={input.type}
-            id={input.id}
             name={input.name}
+            id={input.id}
             title={input.title}
             value={input.value}
             key={index}
@@ -90,47 +86,61 @@ export default function CreateOrder() {
             onBlur={formik.handleBlur}
             touched={formik.touched}
         />
-    )
+    ));
     const { data, isLoading } = useQuery("cart", getCart);
-  console.log(data);
-  if (isLoading) {
-    return <h2>Loading...</h2>;
-  }
-  let total = 0;
+    console.log(data);
+    if (isLoading) {
+        return <h2>Loading...</h2>;
+    }
+    let total = 0;
     return (
-        <>
-            <div className='login'>
-                <div className='container bg-info mt-5  '>
-                   
-                <h2 className='mt-5 text-center'>CreateOrder</h2>
-                            <form onSubmit={formik.handleSubmit} className='mt-4'>
-                                {renderInputs}
-                                <div className='mt-5 text-center '>
-                                    <button type="submit" disabled={!formik.isValid}>Submit</button>
-                                </div>
-                            </form>
-                                 <div className=" col-md-4">{
-                            data?.products ?
-                                data.products.map((product, index) => (
-                                    <React.Fragment key={index}>
-                                        <div className=" pt-5">
-                                            <h2>{product.details.name}</h2>
-                                            <img src={product.details.mainImage.secure_url} alt="" />
-                                            <h2>Discount:{product.details.discount}</h2>
-                                            <h2>Price:{product.details.price}</h2>
-                                            <h2>Final Price:{product.details.finalPrice}</h2>
-                                            <h2>Quantity:{product.quantity}</h2>
+        <> 
+        <div className="login">
+            <div className="container  pt-5">
+                <div className="row">
+                    <div className="rr row">
+                        {data?.products
+                            ? data.products.map((product, index) => (
+                                <React.Fragment key={index}>
+                                    <div className="card mx-1 my-3 col-md-5">
+                                        <div className=" mb-2 ">
+                                            <div className=" pt-5">
+                                                <div className="card-body text-center">
+                                                    <h2>{product.details.name}</h2>
+                                                    <img className=' imag mt-5 text-center ' src={product.details.mainImage.secure_url} alt="" />
+                                                    <h2 className='mt-5'>Discount: {product.details.discount}</h2>
+                                                    <h2 className='mt-5'> Price: {product.details.price}</h2>
+                                                    <h2 className='mt-5'>Final Price: {product.details.finalPrice}</h2>
+                                                    <h2 className='mt-5'>Quantity: {product.quantity}</h2>
+                                                </div>
+                                                <div className=' text-center'>
+                                    {(total = total + product.details.finalPrice)}
+                                    </div>
+                                            </div>
                                         </div>
-                                        {(total = total + product.details.finalPrice)}
-                                    </React.Fragment>
-                                )) :<h2> Cart Is add</h2>}
-                              
-                         
-                        </div>
-                        </div>
-                   
+                                    </div>
+                                  
+                                </React.Fragment>
+                            ))
+                            : ""}
+                    </div>
+                    <div className="rr">
+                        <h2 className="CreateOrder text-center  mt-4">CreateOrder</h2>
+                        <form className="name" onSubmit={formik.handleSubmit} >
+                            {renderInputs}
+                            <div className=" text-center input-group my-4 d-block m-auto w-50 ">
+                                <input
+                                    type="submit"
+                                    className=" t  my-3 submit text-white"
+                                    disabled={!formik.isValid}
+                                    value="Create Order"
+                                />
+                            </div>
+                        </form>
+                    </div>
                 </div>
-          
+            </div>
+            </div>
         </>
-    )
+    );
 }

@@ -23,10 +23,12 @@ export default function Categories() {
     return <h2>...Loading</h2>
   }
   return (
+    
+    <div className='body'>
     <div className='container'>
    
     <Swiper
-    modules={[Navigation, Pagination,Autoplay]}
+    modules={[Navigation,Pagination,Autoplay]}
     spaceBetween={50}
     slidesPerView={6.3}
     navigation
@@ -62,5 +64,6 @@ export default function Categories() {
     
     <div className='swiper-custom-pagination'></div>
     </div> 
+    </div>
   )
 }

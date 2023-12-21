@@ -1,32 +1,53 @@
 .profile{
-    background-color: rgb(221, 250, 255);
+    background-color: rgb(228, 251, 255);
     font-size: 25px;
-    color: rgb(12, 145, 123);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    font-family:'Times New Roman', Times, serif;
     display: flex;
+    font-weight: 500;
     gap:30px;
     height: 100;
+
 }
 .userData{
     width: 30%;
     height:30%;
+    margin-top: 30px;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 600;
+    text-align: center;
+    
+   
 }
 .profileLinks nav{
-    background-color: rgb(152, 240, 255);
-    height:calc( 100dvh - 80px);
+    background-color:  rgb(157, 227, 248);
+    height:calc( 700dvh - 80px);
     display: flex;
     flex-direction: column;
     gap: 20px;
     width: 250px;
     align-items: center;
+    padding-top: 10%;
+
 }
 .profileLinks{
     width: 300px;
 }
 .userData{
     flex-grow: 1;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 600;
+    text-align: center;
+    
 }
 nav a{
-    color:rgb(12, 145, 123);
+    color:rgb(0, 0, 0);
     text-decoration: none;
+}
+.t{
+    margin-top: 10px;
+    color: black;
+}
+.na{
+    height: 100%;
 }

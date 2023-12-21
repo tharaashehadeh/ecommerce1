@@ -1,3 +1,28 @@
-.login{
+.loginn{
 display:block;
+background-color: rgb(220, 249, 255);
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+color:black;
+font-size: 15px;
+height: 100vh;
+margin-top: 4px;
+font-weight: 600;
+}
+.tt{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+   font-size: 20px;
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    justify-content: center;
+    text-align: center;
+    
+}
+.t{
+    background-color: rgb(92, 209, 244);
+    color: rgb(255, 255, 255);
+   font-size: 20px;
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    justify-content: center;
+    text-align: center;
+    margin-right: 50px;
 }

@@ -6,6 +6,7 @@ import axios from 'axios';
 import {toast } from 'react-toastify';
 import {Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/User.jsx';
+import './ForgetPassword.css'
 export default function ForgetPassword() {
       const navigate = useNavigate();
       let{userToken,setUserToken}= useContext(UserContext);
@@ -81,13 +82,13 @@ export default function ForgetPassword() {
         )
   return (
      <>
-       <div className='login'>
-    <div className='container bg-info mt-5  '> 
-    <h2 className='mt-5 text-center'>Forget Password</h2>
+       <div className='log'>
+    <div className='container '> 
+    <h2 className=' text-center'>Forget Password</h2>
     <form onSubmit={formik.handleSubmit} className='mt-4'>
         {renderInputs}
   <div className='mt-5 text-center '> 
-  <input type="Submit" className=" bg-info  text-black" value="Save" />
+  <input type="Submit" className="  t" value="Save" />
   </div>
     </form>
     </div>

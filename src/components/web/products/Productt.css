@@ -1,0 +1,54 @@
+.pro{
+    background-color: rgb(220, 249, 255);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:black;
+    font-size: 15px;
+    height: 100%;
+    
+}
+.image{
+    width: 100%;
+    height:100%;
+}
+.button{
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+     color:rgba(255, 255, 255, 0.822);
+     background-color:rgba(22, 163, 219, 0.822);
+
+}
+.Review {
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 25px;
+     color:rgba(22, 163, 219, 0.822);
+}
+.review_img {
+    width: 150px;
+    height: 150px ;
+    margin: auto;
+}
+.card{
+background-color: rgb(193, 238, 255);
+height: 100%;
+}
+.imag{
+    width: 200px;
+    height: 200px ;
+    margin-right:-5px ;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.pagee{
+    justify-content: center;
+    margin-top: 30px;
+    text-align: center;
+    
+}
+.par{
+    margin-left:200px;
+}

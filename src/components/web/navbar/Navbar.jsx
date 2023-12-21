@@ -3,6 +3,7 @@ import { Link, useNavigate} from 'react-router-dom';
 import { UserContext } from '../context/User';
 import{CartContext} from '../context/Cart.jsx'
 import { useQuery } from 'react-query';
+import './Navbar.css'
 export default function Navbar() {
 
   let { userToken,setUserToken,userData,setUserData } = useContext(UserContext);
@@ -23,9 +24,9 @@ export default function Navbar() {
   // console.log(user);
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-info">
+      <nav className="navbar navbar-expand-lg ">
         <div className="container">
-          <a className="navbar-brand font-weight-bold" href="#">Ecommerce</a>
+          <a className="navbar-brand font-weight-bold" href="#">Thara'a-Shop</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
@@ -41,7 +42,7 @@ export default function Navbar() {
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href="#">Products</a>
+                <Link className="nav-link" to="/productt">Products</Link>
               </li>
               {userToken ? (
               <li className="nav-item">

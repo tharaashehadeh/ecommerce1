@@ -3,7 +3,7 @@ import Layout from "./Layout";
 import Home from "./../components/web/home/Home";
 import Categories from "../components/web/categories/Categories";
 import DashbordLayout from "./DashbordLayout";
-import Register from "../components/web/register/Register .jsx";
+import Register from "../components/web/register/Register.jsx";
 import Login from "../components/web/login/Login.jsx";
 import Cart from "../components/web/cart/Cart.jsx";
 import CategoriesDetails from "../components/web/categories/CategoriesDetails.jsx";
@@ -16,6 +16,10 @@ import UserInfo from "../components/web/profile/UserInfo.jsx";
 import UserContact from "../components/web/profile/UserContact.jsx";
 import CreateOrder from "../components/web/createOrder/CreateOrder.jsx";
 import GetOrder from "../components/web/createOrder/GetOrder.jsx";
+import Productt from "../components/web/products/Productt.jsx";
+import Reviews from "../components/web/reviews/Reviews.jsx";
+
+
 export  const router = createBrowserRouter([
     {
       path: "/",
@@ -30,6 +34,19 @@ export  const router = createBrowserRouter([
             path: "login",
             element:<Login />,
            
+          },
+          {
+            path: "productt",
+            element:<Productt />,
+           
+          },
+          {
+            path:"/product/:productId",
+            element:<Product/>
+          },
+          {
+            path: "/product/:productId/review",
+            element: <Reviews/>,
           },
         
         {
@@ -71,13 +88,14 @@ export  const router = createBrowserRouter([
                </UserContact>
 
               },
+          
               {
                 path:'getorder',
                 element:<GetOrder>
- 
                 </GetOrder>
  
-               }
+               },
+              
             ]
            
             
@@ -98,10 +116,7 @@ export  const router = createBrowserRouter([
           path:"/products/category/:categoryId",
           element:<CategoriesDetails/>
         },
-        {
-          path:"/product/:productId",
-          element:<Product/>
-        },
+       
         {
           path:"*",
           element:<h2>404 page not found ---- web</h2>,

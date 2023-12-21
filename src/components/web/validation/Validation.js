@@ -22,5 +22,5 @@ export const forgetPasswordSchema = yup.object({
   export const CreateOrderSchema = yup.object({
     couponName: yup.string().required().required("couponName is requried ").min(5, "must be at least 5 char") .max(18, "max is 18 char"),
     address: yup .string().required("address is requried ").min(5, "must be at least 5 char") .max(18, "max is 18 char"),
-    phone: yup.string().required("phone is required ").min(10, "must be at least 10 char") .max(18, "max is 18 char"),
+    phone: yup.string().required("phone is required ").min(15, "must be at least 15 char") .max(18, "max is 18 char"),
   });

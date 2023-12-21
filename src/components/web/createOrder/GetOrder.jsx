@@ -2,13 +2,13 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import React from 'react'
 import { useQuery } from 'react-query';
-
+import './CreateOrder.css'
 export default function GetOrder() {
     const order = async () => {
         try {
           let token = localStorage.getItem("userToken");
             const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/order`,
-            { headers: { Authorization: `Tariq__${token}` } }
+            { headers: { Authorization:`Tariq__${token}`}}
             )
             console.log(data);
             return data;
@@ -23,8 +23,8 @@ export default function GetOrder() {
         return <h2>loading...</h2>
     }
     return (
-        <>
-            <div className=" col-md-4">{
+        <div className='rr'>
+            <div className=" col-md-8">{
                 data?.orders ?
                     data.orders.map((order, index) => (
                         <div className='col-md-12'key={index}>
@@ -34,12 +34,13 @@ export default function GetOrder() {
                                 <h2>coupon-Name : {order.couponName}</h2>
                                 <h2>final-Price : {order.finalPrice}</h2>
                                 <h2>payment-Type : {order.paymentType}</h2>
+                                <h2>status : {order.status}</h2>
                             </div>
                         </div>
                     )) : <h2> Get Order</h2>}
 
 
             </div>
-        </>
+        </div>
     )
 }

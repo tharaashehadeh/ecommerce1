@@ -7,11 +7,11 @@ export default function UserInfo() {
         return <p>...Loading</p>
       }
   return (
-    <>
+    <div className=''>
     <div className={`${style.userData}`}>
      <h2>{userData.userName}</h2>
     <img  src={userData.image.secure_url} />
      </div>
-    </>
+    </div>
   )
 }

@@ -88,14 +88,14 @@ export default function Login () {
     )
   return (
     <>
-    <div className='login'>
-    <div className='container bg-info mt-5  '> 
-    <h2 className='mt-5 text-center'>Login</h2>
+    <div className='loginn'>
+    <div className='container  '> 
+    <h2 className='text-center'>Login</h2>
     <form onSubmit={formik.handleSubmit} className='mt-4'>
         {renderInputs}
-  <div className='mt-5 text-center '> 
-  <button  type="submit"  disabled={!formik.isValid}>Login</button>
-  <Link to='/sendCode' className="mx-5 text-black">Forget-Password</Link>
+  <div className='mt-5  mx-5 text-center '> 
+  <button  className='t my-3' type="submit"  disabled={!formik.isValid}>Login</button>
+  <Link  to='/sendCode' className="tt tmx-5 text-black">Forget-Password</Link>
   </div>
     </form>
     </div>
